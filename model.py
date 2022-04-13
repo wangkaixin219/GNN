@@ -53,7 +53,7 @@ class GraphSage(nn.Module):
 
         assert len(nodes_batch_layers) == self.num_layers+1
 
-        pre_hidden_embs = self.emb_layer(torch.LongTensor(range(self.n_nodes)))
+        pre_hidden_embs = self.emb_layer(torch.LongTensor(range(self.n_nodes)).to(self.device))
         for index in range(1, self.num_layers+1):
             nb = nodes_batch_layers[index][0]
             pre_neighs = nodes_batch_layers[index-1]
